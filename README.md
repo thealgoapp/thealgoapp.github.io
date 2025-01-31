@@ -1,1 +1,2 @@
-# thealgoapp.github.io
+# The Algo APP
+

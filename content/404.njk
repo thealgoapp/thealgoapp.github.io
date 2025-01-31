@@ -1,0 +1,67 @@
+---
+layout: layouts/main.njk
+permalink: 404.html
+---
+
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f4f4f4;
+        color: #333;
+        padding: 50px;
+    }
+    .container {
+        max-width: 600px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+        font-size: 48px;
+        margin-bottom: 10px;
+    }
+    p {
+        font-size: 18px;
+        line-height: 1.6;
+    }
+    .btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: white;
+        background: #007BFF;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+    .btn:hover {
+        background: #0056b3;
+    }
+    .emoji {
+        font-size: 50px;
+    }
+</style>
+
+<div class="container">
+    <div class="emoji">🔍</div>
+    <h1>404: Page Not Found</h1>
+    <p>Oops! We tried searching using <strong>DFS, BFS, and even brute-force</strong>… but this page is nowhere to be found. 😢</p>
+    <p><strong>Possible reasons:</strong></p>
+    <ul>
+        <li>📌 The page was <strong>garbage collected</strong>.</li>
+        <li>⚡ A <strong>race condition</strong> led you to the wrong place.</li>
+        <li>✂️ Someone applied <strong>quicksort</strong>, and this page got partitioned away.</li>
+    </ul>
+    <p><strong>What now?</strong></p>
+    <ul>
+        <li>🔄 <strong>Backtrack</strong> to the previous page.</li>
+        <li>🔍 <strong>Try a hash map lookup</strong> (a.k.a. search).</li>
+        <li>🛤 <strong>Recalculate your shortest path</strong> – maybe start from the <a href="/" class="btn">Homepage</a>.</li>
+    </ul>
+    <p>If all else fails, let’s just say it’s an <strong>O(1) problem</strong> – because we’re ignoring it! 😆</p>
+</div>
