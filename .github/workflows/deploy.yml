@@ -49,9 +49,10 @@ jobs:
         run: npm run build
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2  # Обновленная версия
+        uses: actions/upload-artifact@v4
         with:
-          path: ./_site  # Папка сборки для Eleventy
+          name: github-pages
+          path: ./_site
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
