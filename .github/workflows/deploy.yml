@@ -50,22 +50,9 @@ jobs:
       - name: Build site
         run: npm run build
 
-      - name: Upload artifact
-        run: |
-          echo "Checking if _site exists..."
-          ls -la _site || echo "_site folder not found!"
-        continue-on-error: true
-
-      - name: Upload to GitHub Pages
-        uses: actions/upload-artifact@v4
-        with:
-          name: github-pages
-          path: ./_site
-
-      - name: Debug Check artifacts
-        run: ls -la ${{ runner.temp }}/_github_workflow || echo "Артефакты не найдены!"
-
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v2
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          artifact_name: github-pages
+          branch: gh-pages
+          folder: _site
+          clean: true
