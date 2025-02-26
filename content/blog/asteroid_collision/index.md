@@ -4,6 +4,7 @@ title: Столкновение астероидов
 date: 2023-12-11
 complexity: medium
 original_url: https://leetcode.com/problems/asteroid-collision/
+author: dakolpakov
 preview_image: /images/previews/asteroid_collision.webp
 tags:
   - medium

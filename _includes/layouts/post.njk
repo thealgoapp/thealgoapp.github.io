@@ -43,6 +43,13 @@
 
     <div class="post-card task-card"
     {{ content | safe }}
+
+    {% if author %}
+        {% set authorData = authors[author] %}
+        <div class="post-author-data">
+            ✍️ Written&nbsp;by&nbsp;<a href="{{ authors[author].linkedin }}" target="_blank" class="post-author-url">{{ authors[author].name }}&nbsp;<img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" class="linkedin-icon"></a>
+        </div>
+    {% endif %}
     </div>
 
     {% if original_url %}
