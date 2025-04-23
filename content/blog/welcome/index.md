@@ -4,7 +4,8 @@ title: Welcome to TheAlgo.app!
 date: 2025-06-01
 author: dakolpakov
 preview_image: /images/previews/welcome.webp
-draft: true
+excludeFromSitemap: true
+draft: false
 permalink: /blog/welcome/
 og_type: article
 description: A practical blog for software engineers preparing for coding interviews. Dive into algorithms, data structures, and real-world tips to boost your skills and confidence — whether you're aiming for FAANG or just starting out.
