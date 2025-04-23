@@ -1,30 +1,34 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<title>The Algo App</title>
+    <title>Welcome to TheAlgo.app!</title>
 
-	<meta charset="UTF-8">
+    
+
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#157878">
-<meta name="description" content="Master algorithms for technical interviews! Step-by-step problem breakdowns, key concepts, and expert insights to help you confidently tackle coding challenges and land your dream job.">
+<meta name="description" content="In-depth algorithm solution breakdown with TypeScript and Go! Step-by-step explanations, efficient techniques, and hands-on examples to help you confidently tackle coding challenges in both languages">
 
 <!-- Facebook Meta Tags -->
 <meta property="og:url" content="https://thealgo.app">
 <meta property="og:type" content="website">
-<meta property="og:title" content="The Algo App">
-<meta property="og:description" content="Master algorithms for technical interviews! Step-by-step problem breakdowns, key concepts, and expert insights to help you confidently tackle coding challenges and land your dream job.">
-<meta property="og:image" content="https://thealgo.app/images/promo_big.jpg">
+<meta property="og:title" content="Welcome to TheAlgo.app!">
+<meta property="og:description" content="In-depth algorithm solution breakdown with TypeScript and Go! Step-by-step explanations, efficient techniques, and hands-on examples to help you confidently tackle coding challenges in both languages">
+<meta property="og:image" content="https://thealgo.app/images/previews/welcome.webp">
 
 <!-- Twitter Meta Tags -->
 <meta property="twitter:domain" content="thealgo.app">
 <meta property="twitter:url" content="https://thealgo.app">
-<meta name="twitter:title" content="The Algo App">
-<meta name="twitter:description" content="Master algorithms for technical interviews! Step-by-step problem breakdowns, key concepts, and expert insights to help you confidently tackle coding challenges and land your dream job.">
-<meta name="twitter:image" content="https://thealgo.app/images/promo_big.jpg">
+<meta name="twitter:title" content="Welcome to TheAlgo.app!">
+<meta name="twitter:description" content="In-depth algorithm solution breakdown with TypeScript and Go! Step-by-step explanations, efficient techniques, and hands-on examples to help you confidently tackle coding challenges in both languages">
+<meta name="twitter:image" content="https://thealgo.app/images/previews/welcome.webp">
 
-	<link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
-	<style>/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+    <script src="/js/tabs.js"></script>
+
+    <style>/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 
 /**
  * 1. Set default font family to sans-serif.
@@ -975,35 +979,379 @@ code {
     background: #fff1f0;
     border-color: #ffa39e;
 }
-.pagination {
+.tab {
     display: flex;
-    margin-top: 20px;
+    flex-wrap: wrap;
+    margin-left: -20px;
+    padding: 0;
+    list-style: none;
+    position: relative;
 }
 
-.pagination .element {
-    border-radius: 8px;
+.tab > * {
+    flex: none;
+    padding-left: 20px;
+    position: relative;
+}
+
+.tab > * > a {
+    display: block;
+    text-align: center;
+    padding: 9px 20px;
+    color: #999;
+    border-bottom: 2px solid transparent;
+    font-size: 12px;
+    text-transform: uppercase;
+    transition: color .1s ease-in-out;
+    line-height: 20px;
+}
+
+.tab > .active > a {
+    color:#222;
+    border-color: #1e87f0;
+}
+
+.tab > li > a {
     text-decoration: none;
-    height: 40px;
-    width: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    cursor: pointer;
 }
 
-.pagination .element.active {
-    background-color: #1e6bb8;
-    color: white;
+.tab-content {
+    padding: 0;
 }
 
-.pagination .element:hover:not(.active, .disabled) {
-    background-color: #ddd;
+.tab-content > li {
+    display: none;
+}
+.tab-content > li.active {
+    display: initial;
+}
+.post-navigation {
+	display: flex;
+	justify-content: space-between;
+	gap: 16px;
+	margin: 20px 0;
 }
 
-.pagination .element.disabled{
-    color: #bebebe;
+@media screen and (max-width: 42em) {
+	.post-navigation {
+		padding: 0 16px;
+		font-size: 14px;
+	}
+}
+
+.post-meta {
+	display: flex;
+	justify-content: space-between;
+	gap: 8px;
+	margin-bottom: 4px;
+	font-size: 14px;
+	padding: 0 14px;
+}
+
+.post-time {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+	color: #606c71;
+}
+
+.post-complexity {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.post-author-data {
+	display: flex;
+	justify-content: right;
+	margin-top: 50px;
+	border-radius: 10px;
+	font-size: 18px;
+}
+
+.post-author-url {
+	color: #0077b5;
+	text-decoration: none;
+	font-weight: bold;
+	display: inline-flex;
+	align-items: center;
+}
+
+.post-author-url:hover {
+	text-decoration: underline;
+}
+
+.post-tg-data {
+	display: flex;
+	justify-content: right;
+	margin-top: 10px;
+	border-radius: 10px;
+	font-size: 12px;
+	color: #555;
+}
+
+.post-tg-url {
+	color: #0077b5;
+	text-decoration: none;
+	font-weight: bold;
+	display: inline-flex;
+	align-items: center;
+}
+
+.post-tg-url:hover {
+	text-decoration: underline;
+}
+
+.linkedin-icon {
+	width: 16px;
+	height: 16px;
+	margin-left: 5px;
+}
+
+.post-original-url {
+	display: flex;
+	justify-content: center;
+	margin-top: 10px;
+	font-size: 14px;
+}
+
+.header-anchor {
+	color: #00000050;
+	display: none;
+}
+
+.header-anchor:hover {
+	color: #00000085;
+	text-decoration: underline;
+}
+
+h1:hover .header-anchor,
+h2:hover .header-anchor,
+h3:hover .header-anchor,
+h4:hover .header-anchor,
+h5:hover .header-anchor,
+h6:hover .header-anchor {
+	display: inline-block;
+}
+
+.code-sample pre {
+	font-size: 0.85rem;
+}
+code[class*="language-"],
+pre[class*="language-"] {
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	color: #c3cee3;
+	background: #263238;
+	font-family: Roboto Mono, monospace;
+	font-size: 0.8rem;
+	line-height: 1.5em;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+code[class*="language-"]::-moz-selection,
+pre[class*="language-"]::-moz-selection,
+code[class*="language-"] ::-moz-selection,
+pre[class*="language-"] ::-moz-selection {
+	background: #363636;
+}
+
+code[class*="language-"]::selection,
+pre[class*="language-"]::selection,
+code[class*="language-"] ::selection,
+pre[class*="language-"] ::selection {
+	background: #363636;
+}
+
+:not(pre) > code[class*="language-"] {
+	white-space: normal;
+	border-radius: 0.2em;
+	padding: 0.1em;
+}
+
+pre[class*="language-"] {
+	overflow: auto;
+	position: relative;
+	margin: 0.5em 0;
+	padding: 1.25em 1em;
+}
+
+.language-css > code,
+.language-sass > code,
+.language-scss > code {
+	color: #fd9170;
+}
+
+[class*="language-"] .namespace {
+	opacity: 0.7;
+}
+
+.token.atrule {
+	color: #c792ea;
+}
+
+.token.attr-name {
+	color: #ffcb6b;
+}
+
+.token.attr-value {
+	color: #c3e88d;
+}
+
+.token.attribute {
+	color: #c3e88d;
+}
+
+.token.boolean {
+	color: #c792ea;
+}
+
+.token.builtin {
+	color: #ffcb6b;
+}
+
+.token.cdata {
+	color: #80cbc4;
+}
+
+.token.char {
+	color: #80cbc4;
+}
+
+.token.class {
+	color: #ffcb6b;
+}
+
+.token.class-name {
+	color: #f2ff00;
+}
+
+.token.color {
+	color: #f2ff00;
+}
+
+.token.comment {
+	color: #546e7a;
+}
+
+.token.constant {
+	color: #c792ea;
+}
+
+.token.deleted {
+	color: #f07178;
+}
+
+.token.doctype {
+	color: #546e7a;
+}
+
+.token.entity {
+	color: #f07178;
+}
+
+.token.function {
+	color: #c792ea;
+}
+
+.token.hexcode {
+	color: #f2ff00;
+}
+
+.token.id {
+	color: #c792ea;
+	font-weight: bold;
+}
+
+.token.important {
+	color: #c792ea;
+	font-weight: bold;
+}
+
+.token.inserted {
+	color: #80cbc4;
+}
+
+.token.keyword {
+	color: #c792ea;
+	font-style: italic;
+}
+
+.token.number {
+	color: #fd9170;
+}
+
+.token.operator {
+	color: #89ddff;
+}
+
+.token.prolog {
+	color: #546e7a;
+}
+
+.token.property {
+	color: #80cbc4;
+}
+
+.token.pseudo-class {
+	color: #c3e88d;
+}
+
+.token.pseudo-element {
+	color: #c3e88d;
+}
+
+.token.punctuation {
+	color: #89ddff;
+}
+
+.token.regex {
+	color: #f2ff00;
+}
+
+.token.selector {
+	color: #f07178;
+}
+
+.token.string {
+	color: #c3e88d;
+}
+
+.token.symbol {
+	color: #c792ea;
+}
+
+.token.tag {
+	color: #f07178;
+}
+
+.token.unit {
+	color: #f07178;
+}
+
+.token.url {
+	color: #fd9170;
+}
+
+.token.variable {
+	color: #f07178;
 }</style>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-	<!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8Z90JVPXDN"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
@@ -1046,20 +1394,13 @@ code {
 </section>
 
 
-<section class="main-content">
-	
-<h1 style="text-align: center">Challenges related to «medium»</h1>
+<section class="post-content">
+    <div class="post-header">
+        <h1>Welcome to TheAlgo.app!</h1>
 
-<div class="all-cards">
-  
-    <a href="/blog/asteroid_collision/" class="post-card">
-    <div class="post-card_image-container" style="background-image: url('/images/previews/asteroid_collision.webp');">
-
-        <div class="post-card_complexity">
+        <div class="post-complexity">
             
 
-
-    <span class="complexity complexity_medium">Medium</span>
 
 
 
@@ -1067,12 +1408,8 @@ code {
         </div>
     </div>
 
-    <div class="post-card_content">
-        <div class="post-card_title">Столкновение астероидов</div>
-
-        <div class="post-card_meta">
-            <div class="post-date">
-                <div class="post-tags">
+    <div class="post-meta">
+        <div class="post-tags">
     
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
             <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
@@ -1084,42 +1421,79 @@ code {
     
 
     <div>
-
-            
-                <span class="post-tag">medium</span>
-            , 
-
-            
-                <span class="post-tag">array</span>
-            , 
-
-            
-                <span class="post-tag">stack</span>
-            
     </div>
 </div>
 
-            </div>
 
-            <div class="post-card_tags">
-                <div class="post-date">
+        
+        <div class="post-date">
 	<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
 		<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
 					d="M4 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm12-4v4M8 3v4m-4 4h16M7 14h.013m2.997 0h.005m2.995 0h.005m3 0h.005m-3.005 3h.005m-6.01 0h.005m2.995 0h.005"/>
 	</svg>
 
-	<span>11 December 2023</span>
+	<span>01 June 2025</span>
 </div>
 
-            </div>
-        </div>
     </div>
-</a>
 
-  
-</div>
+    <div class="post-card task-card"
+    <h1 id="welcome-to-thealgo-app" tabindex="-1">Welcome to TheAlgo.app! <a class="header-anchor" href="#welcome-to-thealgo-app">#</a></h1>
+<p>Hey there — and welcome to <strong>TheAlgo.app</strong>, a blog dedicated to helping you (and ourselves!) get better at one of the most intimidating parts of technical interviews: coding and algorithmic questions.</p>
+<p>Whether you're preparing for a <strong>FAANG</strong> interview or just want to level up your <strong>computer science fundamentals</strong>, you’re in the right place.</p>
+<hr>
+<h2 id="who-are-the-authors" tabindex="-1">Who are the authors? <a class="header-anchor" href="#who-are-the-authors">#</a></h2>
+<p>We’re practicing software engineers with years of industry experience — and dozens (if not hundreds) of technical interviews on both sides of the table.</p>
+<h3 id="denis-kolpakov" tabindex="-1">🔹 <a href="https://www.linkedin.com/in/tifongod/" target="_blank" rel="noopener noreferrer">Denis Kolpakov</a> <a class="header-anchor" href="#denis-kolpakov">#</a></h3>
+<p>I'm a <strong>backend engineer</strong> with 10+ years of experience. I spent 4 years at <strong>Avito</strong>, one of the world’s largest online classifieds platforms, where I worked as a <strong>Senior Golang Engineer</strong> in the Core Services Unit.</p>
+<p>I was responsible for some of the most critical services in the company — including our internal Form Builder and Catalog Data platform. These services supported <strong>millions of requests per minute</strong> and had to meet extremely tight SLAs:</p>
+<ul>
+<li><strong>High availability</strong>: These services were integral to Avito’s critical business processes. We had to ensure an availability rate of <code>99.99%</code> to reliably support business needs.</li>
+<li><strong>Strict SLA</strong>: We maintained a latency below <code>20 ms</code> at the <code>99.9th</code> percentile.</li>
+</ul>
+<h3 id="aleksei-ivasiuta" tabindex="-1">🔹 <a href="https://www.linkedin.com/in/avivasyuta/" target="_blank" rel="noopener noreferrer">Aleksei Ivasiuta</a> <a class="header-anchor" href="#aleksei-ivasiuta">#</a></h3>
+<p>I'm a <strong>Frontend Engineer</strong> and currently a <strong>Team Lead</strong> in the Core Services Unit at <strong>Avito</strong>. Right now, I’m leading the development of a Backend-Driven UI platform that powers our no-code UI builder — letting teams build screens for web and mobile without writing a single line of frontend code. This platform significantly reduces time-to-market for product updates and greatly improve the capacity of our tech teams.</p>
+<p>Previously, I worked in the Sales Experience unit as a Senior Frontend Engineer, where I focused on improving merchant-facing interfaces and overall UX.</p>
+<hr>
+<h2 id="data-structures-and-algorithms-coding-algorithm-interview" tabindex="-1">🔹 Data Structures and Algorithms  ≠ Coding/Algorithm Interview <a class="header-anchor" href="#data-structures-and-algorithms-coding-algorithm-interview">#</a></h2>
+<p>Let’s separate two important concepts:</p>
+<ul>
+<li><strong>Data Structures and Algorithms</strong>: One of the fundamental areas of computer science. It's truly a «science» on its own, and you could spend your whole life exploring this field — from basic school-level concepts all the way up to doctoral research.</li>
+<li><strong>Coding/Algorithm Interviews</strong>: Simply a formal standard in the hiring process where employers try to assess your knowledge of computer science fundamentals.</li>
+</ul>
+<p>If we’re talking about the first concept, I strongly recommend exploring this field to any engineer — at any stage of their professional journey.</p>
+<p>But in my opinion, the second one is often quite useless.</p>
+<p>Honestly? Many great engineers struggle with these interviews. They’re stressful, high-pressure, and far removed from the kind of work we usually do day to day.</p>
+<p>And while some interviewers believe they can «spot the difference» between someone with <strong>deep CS knowledge</strong> and someone who just memorized a few <strong>LeetCode tricks</strong> — the truth is, it’s not always so clear.</p>
+<p>Anyway, this standard originated in the <strong>FAANG</strong> world, spread widely, and eventually became the norm across the tech industry. Since we can’t really avoid it, let’s tackle it with a preparation plan. It’ll be helpful no matter where you are in your career—whether you're a junior or a senior, aiming for FAANG or mid-level companies, with strong CS knowledge or just getting started.</p>
+<hr>
+<h2 id="what-to-expect-from-this-blog" tabindex="-1">🔹 What to Expect from This Blog <a class="header-anchor" href="#what-to-expect-from-this-blog">#</a></h2>
+<p>We built this blog to be:</p>
+<ul>
+<li>🧠 <strong>Educational</strong> — We’ll revisit key CS topics: data structures, complexity, performance, practical optimization tricks, and common workarounds.</li>
+<li>🧩 <strong>Practice-Oriented</strong> — Regular walkthroughs of LeetCode problems to prepare for coding and algorithm interviews.</li>
+<li>💬 <strong>Experience-Based</strong> — We'll share our interview stories (both good and bad), and discuss how to make a strong and lasting impression as an engineer.</li>
+</ul>
+<p>We want to prepare ourselves — and help you prepare — for future interviews, making the process less stressful and a bit more predictable.</p>
+<hr>
+<h3 id="follow-us" tabindex="-1">📌 Follow us! <a class="header-anchor" href="#follow-us">#</a></h3>
+<p>Follow along, solve problems with us, share your thoughts — and get ready to ace your next interview. 😊</p>
+<p>P.S. Even though we have some experience in computer science and interviewing, we’re not «gurus». We can still spend hours trying to solve unfamiliar «medium» problems and figure out the best solutions. This blog is our way to practice together with the community and keep improving our skills.</p>
+<p><strong>Thanks a lot for being here!</strong></p>
 
 
+    
+        
+        <div class="post-author-data">
+            ✍️&nbsp;Written&nbsp;by&nbsp;<a href="https://www.linkedin.com/in/tifongod/" target="_blank" class="post-author-url">Denis Kolpakov&nbsp;<img src="/images/linkedIn_logo_initials.png" alt="LinkedIn" class="linkedin-icon"></a>
+        </div>
+    
+    <p class="post-tg-data">
+      📬&nbsp;Enjoyed&nbsp;the&nbsp;post?&nbsp;<strong><a href="https://t.me/+5CfB3ShlUekzNGUy" target="_blank" class="post-tg-url">Follow&nbsp;our&nbsp;Telegram&nbsp;channel&nbsp;@thealgoapp</a></strong>&nbsp;for&nbsp;more&nbsp;algorithm&nbsp;insights&nbsp;and&nbsp;coding&nbsp;tips!
+    </p>
+    </div>
+
+    
 </section>
 
 <footer class="site-footer">
