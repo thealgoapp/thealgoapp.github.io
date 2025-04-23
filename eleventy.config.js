@@ -13,6 +13,13 @@ const striptags = require('striptags');
 const {EleventyRenderPlugin} = require("@11ty/eleventy");
 
 module.exports = function (eleventyConfig) {
+    eleventyConfig.addCollection("publishedPosts", function(collectionApi) {
+        const allPosts = collectionApi.getFilteredByTag("posts");
+        return allPosts.filter(item => {
+            return !item.data.draft;
+        });
+    });
+
     // Copy the contents of the `public` folder to the output folder
     // For example, `./public/css/` ends up in `_site/css/`
     eleventyConfig.addPassthroughCopy({
