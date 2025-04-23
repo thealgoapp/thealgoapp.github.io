@@ -1,4 +1,4 @@
-{% set description = "In-depth algorithm solution breakdown with TypeScript and Go! Step-by-step explanations, efficient techniques, and hands-on examples to help you confidently tackle coding challenges in both languages" %}
+{% set description = description or page.description or "In-depth algorithm solution breakdown with TypeScript and Go! Step-by-step explanations, efficient techniques, and hands-on examples to help you confidently tackle coding challenges in both languages" %}
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,6 +8,7 @@
 <!-- Facebook Meta Tags -->
 <meta property="og:url" content="{{ metadata.url }}">
 <meta property="og:type" content="website">
+<meta property="og:type" content="{{ og_type or 'website' }}">
 <meta property="og:title" content="{{ title }}">
 <meta property="og:description" content="{{ description }}">
 <meta property="og:image" content="{{ metadata.url }}{{ preview_image }}">

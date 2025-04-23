@@ -79,6 +79,22 @@ module.exports = function (eleventyConfig) {
         return (tags || []).filter(tag => ["all", "nav", "post", "posts"].indexOf(tag) === -1);
     });
 
+    eleventyConfig.addFilter("sitemapFilter", function(collection) {
+        return collection
+            .filter(item => !item.data.draft)
+            .filter(item => !item.data.excludeFromSitemap)
+            .filter(item => item.url && !item.url.includes("404"));
+    });
+
+    eleventyConfig.addFilter("url", function(path) {
+        return `https://thealgo.app${path}`;
+    });
+
+    eleventyConfig.addFilter("date", function(date) {
+        return new Date(date).toISOString().split("T")[0];
+    });
+
+
     // Customize Markdown library settings:
     eleventyConfig.amendLibrary("md", mdLib => {
         mdLib.use(markdownItAnchor, {
