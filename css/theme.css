@@ -404,6 +404,13 @@ hr {
     background-size: contain;
 }
 
+.post-header_image-container {
+    position: relative;
+    border-bottom: 1px solid #f2f2f2;
+    height: 300px;
+    background-size: cover;
+}
+
 .post-card_complexity {
     position: absolute;
     left: 20px;
