@@ -47,9 +47,12 @@
     {% if author %}
         {% set authorData = authors[author] %}
         <div class="post-author-data">
-            ✍️ Written&nbsp;by&nbsp;<a href="{{ authors[author].linkedin }}" target="_blank" class="post-author-url">{{ authors[author].name }}&nbsp;<img src="/images/linkedIn_logo_initials.png" alt="LinkedIn" class="linkedin-icon"></a>
+            ✍️&nbsp;Written&nbsp;by&nbsp;<a href="{{ authors[author].linkedin }}" target="_blank" class="post-author-url">{{ authors[author].name }}&nbsp;<img src="/images/linkedIn_logo_initials.png" alt="LinkedIn" class="linkedin-icon"></a>
         </div>
     {% endif %}
+    <p class="post-tg-data">
+      📬&nbsp;Enjoyed&nbsp;the&nbsp;post?&nbsp;<strong><a href="{{ links.tg_invite }}" target="_blank" class="post-tg-url">Follow&nbsp;our&nbsp;Telegram&nbsp;channel&nbsp;@thealgoapp</a></strong>&nbsp;for&nbsp;more&nbsp;algorithm&nbsp;insights&nbsp;and&nbsp;coding&nbsp;tips!
+    </p>
     </div>
 
     {% if original_url %}
