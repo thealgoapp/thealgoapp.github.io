@@ -1,7 +1,7 @@
 ---
 layout: layouts/post.njk
 title: Two Sum
-date: 2025-06-02
+date: 2025-06-04
 original_url: https://leetcode.com/problems/two-sum/
 author: dakolpakov
 preview_image: /images/previews/two-sum/preview.webp
