@@ -1,35 +1,30 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>How to Succeed During the Interview (Part 2, Strategy &amp; Communication)</title>
+	<title>The Algo App</title>
 
-    
-
-<meta charset="UTF-8">
+	<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#157878">
-<meta name="description" content="Learn how to approach algorithm interviews like a pro. Ask the right questions, communicate clearly, think out loud, and handle edge cases with confidence.">
+<meta name="description" content="Master algorithms for technical interviews! Step-by-step problem breakdowns, key concepts, and expert insights to help you confidently tackle coding challenges and land your dream job.">
 
 <!-- Facebook Meta Tags -->
 <meta property="og:url" content="https://thealgo.app">
 <meta property="og:type" content="website">
-<meta property="og:type" content="article">
-<meta property="og:title" content="How to Succeed During the Interview (Part 2, Strategy &amp; Communication)">
-<meta property="og:description" content="Learn how to approach algorithm interviews like a pro. Ask the right questions, communicate clearly, think out loud, and handle edge cases with confidence.">
-<meta property="og:image" content="https://thealgo.app/images/previews/prepare-for-Interviews-p2.webp">
+<meta property="og:title" content="The Algo App">
+<meta property="og:description" content="Master algorithms for technical interviews! Step-by-step problem breakdowns, key concepts, and expert insights to help you confidently tackle coding challenges and land your dream job.">
+<meta property="og:image" content="https://thealgo.app/images/promo_big.jpg">
 
 <!-- Twitter Meta Tags -->
 <meta property="twitter:domain" content="thealgo.app">
 <meta property="twitter:url" content="https://thealgo.app">
-<meta name="twitter:title" content="How to Succeed During the Interview (Part 2, Strategy &amp; Communication)">
-<meta name="twitter:description" content="Learn how to approach algorithm interviews like a pro. Ask the right questions, communicate clearly, think out loud, and handle edge cases with confidence.">
-<meta name="twitter:image" content="https://thealgo.app/images/previews/prepare-for-Interviews-p2.webp">
+<meta name="twitter:title" content="The Algo App">
+<meta name="twitter:description" content="Master algorithms for technical interviews! Step-by-step problem breakdowns, key concepts, and expert insights to help you confidently tackle coding challenges and land your dream job.">
+<meta name="twitter:image" content="https://thealgo.app/images/promo_big.jpg">
 
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="icon" type="image/x-icon" href="/favicon.ico">
 
-    <script src="/js/tabs.js"></script>
-
-    <style>/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+	<style>/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 
 /**
  * 1. Set default font family to sans-serif.
@@ -988,379 +983,35 @@ code {
     background: #fff1f0;
     border-color: #ffa39e;
 }
-.tab {
+.pagination {
     display: flex;
-    flex-wrap: wrap;
-    margin-left: -20px;
-    padding: 0;
-    list-style: none;
-    position: relative;
+    margin-top: 20px;
 }
 
-.tab > * {
-    flex: none;
-    padding-left: 20px;
-    position: relative;
-}
-
-.tab > * > a {
-    display: block;
-    text-align: center;
-    padding: 9px 20px;
-    color: #999;
-    border-bottom: 2px solid transparent;
-    font-size: 12px;
-    text-transform: uppercase;
-    transition: color .1s ease-in-out;
-    line-height: 20px;
-}
-
-.tab > .active > a {
-    color:#222;
-    border-color: #1e87f0;
-}
-
-.tab > li > a {
+.pagination .element {
+    border-radius: 8px;
     text-decoration: none;
-    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.tab-content {
-    padding: 0;
+.pagination .element.active {
+    background-color: #1e6bb8;
+    color: white;
 }
 
-.tab-content > li {
-    display: none;
-}
-.tab-content > li.active {
-    display: initial;
-}
-.post-navigation {
-	display: flex;
-	justify-content: space-between;
-	gap: 16px;
-	margin: 20px 0;
+.pagination .element:hover:not(.active, .disabled) {
+    background-color: #ddd;
 }
 
-@media screen and (max-width: 42em) {
-	.post-navigation {
-		padding: 0 16px;
-		font-size: 14px;
-	}
-}
-
-.post-meta {
-	display: flex;
-	justify-content: space-between;
-	gap: 8px;
-	margin-bottom: 4px;
-	font-size: 14px;
-	padding: 0 14px;
-}
-
-.post-time {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 4px;
-	color: #606c71;
-}
-
-.post-complexity {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.post-author-data {
-	display: flex;
-	justify-content: right;
-	margin-top: 50px;
-	border-radius: 10px;
-	font-size: 18px;
-}
-
-.post-author-url {
-	color: #0077b5;
-	text-decoration: none;
-	font-weight: bold;
-	display: inline-flex;
-	align-items: center;
-}
-
-.post-author-url:hover {
-	text-decoration: underline;
-}
-
-.post-tg-data {
-	display: flex;
-	justify-content: right;
-	margin-top: 10px;
-	border-radius: 10px;
-	font-size: 12px;
-	color: #555;
-}
-
-.post-tg-url {
-	color: #0077b5;
-	text-decoration: none;
-	font-weight: bold;
-	display: inline-flex;
-	align-items: center;
-}
-
-.post-tg-url:hover {
-	text-decoration: underline;
-}
-
-.linkedin-icon {
-	width: 16px;
-	height: 16px;
-	margin-left: 5px;
-}
-
-.post-original-url {
-	display: flex;
-	justify-content: center;
-	margin-top: 10px;
-	font-size: 14px;
-}
-
-.header-anchor {
-	color: #00000050;
-	display: none;
-}
-
-.header-anchor:hover {
-	color: #00000085;
-	text-decoration: underline;
-}
-
-h1:hover .header-anchor,
-h2:hover .header-anchor,
-h3:hover .header-anchor,
-h4:hover .header-anchor,
-h5:hover .header-anchor,
-h6:hover .header-anchor {
-	display: inline-block;
-}
-
-.code-sample pre {
-	font-size: 0.85rem;
-}
-code[class*="language-"],
-pre[class*="language-"] {
-	text-align: left;
-	white-space: pre;
-	word-spacing: normal;
-	word-break: normal;
-	word-wrap: normal;
-	color: #c3cee3;
-	background: #263238;
-	font-family: Roboto Mono, monospace;
-	font-size: 0.8rem;
-	line-height: 1.5em;
-
-	-moz-tab-size: 4;
-	-o-tab-size: 4;
-	tab-size: 4;
-
-	-webkit-hyphens: none;
-	-moz-hyphens: none;
-	-ms-hyphens: none;
-	hyphens: none;
-}
-
-code[class*="language-"]::-moz-selection,
-pre[class*="language-"]::-moz-selection,
-code[class*="language-"] ::-moz-selection,
-pre[class*="language-"] ::-moz-selection {
-	background: #363636;
-}
-
-code[class*="language-"]::selection,
-pre[class*="language-"]::selection,
-code[class*="language-"] ::selection,
-pre[class*="language-"] ::selection {
-	background: #363636;
-}
-
-:not(pre) > code[class*="language-"] {
-	white-space: normal;
-	border-radius: 0.2em;
-	padding: 0.1em;
-}
-
-pre[class*="language-"] {
-	overflow: auto;
-	position: relative;
-	margin: 0.5em 0;
-	padding: 1.25em 1em;
-}
-
-.language-css > code,
-.language-sass > code,
-.language-scss > code {
-	color: #fd9170;
-}
-
-[class*="language-"] .namespace {
-	opacity: 0.7;
-}
-
-.token.atrule {
-	color: #c792ea;
-}
-
-.token.attr-name {
-	color: #ffcb6b;
-}
-
-.token.attr-value {
-	color: #c3e88d;
-}
-
-.token.attribute {
-	color: #c3e88d;
-}
-
-.token.boolean {
-	color: #c792ea;
-}
-
-.token.builtin {
-	color: #ffcb6b;
-}
-
-.token.cdata {
-	color: #80cbc4;
-}
-
-.token.char {
-	color: #80cbc4;
-}
-
-.token.class {
-	color: #ffcb6b;
-}
-
-.token.class-name {
-	color: #f2ff00;
-}
-
-.token.color {
-	color: #f2ff00;
-}
-
-.token.comment {
-	color: #546e7a;
-}
-
-.token.constant {
-	color: #c792ea;
-}
-
-.token.deleted {
-	color: #f07178;
-}
-
-.token.doctype {
-	color: #546e7a;
-}
-
-.token.entity {
-	color: #f07178;
-}
-
-.token.function {
-	color: #c792ea;
-}
-
-.token.hexcode {
-	color: #f2ff00;
-}
-
-.token.id {
-	color: #c792ea;
-	font-weight: bold;
-}
-
-.token.important {
-	color: #c792ea;
-	font-weight: bold;
-}
-
-.token.inserted {
-	color: #80cbc4;
-}
-
-.token.keyword {
-	color: #c792ea;
-	font-style: italic;
-}
-
-.token.number {
-	color: #fd9170;
-}
-
-.token.operator {
-	color: #89ddff;
-}
-
-.token.prolog {
-	color: #546e7a;
-}
-
-.token.property {
-	color: #80cbc4;
-}
-
-.token.pseudo-class {
-	color: #c3e88d;
-}
-
-.token.pseudo-element {
-	color: #c3e88d;
-}
-
-.token.punctuation {
-	color: #89ddff;
-}
-
-.token.regex {
-	color: #f2ff00;
-}
-
-.token.selector {
-	color: #f07178;
-}
-
-.token.string {
-	color: #c3e88d;
-}
-
-.token.symbol {
-	color: #c792ea;
-}
-
-.token.tag {
-	color: #f07178;
-}
-
-.token.unit {
-	color: #f07178;
-}
-
-.token.url {
-	color: #fd9170;
-}
-
-.token.variable {
-	color: #f07178;
+.pagination .element.disabled{
+    color: #bebebe;
 }</style>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-    <!-- Google tag (gtag.js) -->
+	<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8Z90JVPXDN"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
@@ -1403,12 +1054,19 @@ pre[class*="language-"] {
 </section>
 
 
-<section class="post-content">
-    <div class="post-header">
-        <h1>How to Succeed During the Interview (Part 2, Strategy &amp; Communication)</h1>
+<section class="main-content">
+	
+<h1 style="text-align: center">Challenges related to «hash table»</h1>
 
-        <div class="post-complexity">
+<div class="all-cards">
+  
+    <a href="/blog/two-sum/" class="post-card">
+    <div class="post-card_image-container" style="background-image: url('/images/previews/two-sum/preview.webp');">
+
+        <div class="post-card_complexity">
             
+    <span class="complexity complexity_easy">Easy</span>
+
 
 
 
@@ -1417,8 +1075,12 @@ pre[class*="language-"] {
         </div>
     </div>
 
-    <div class="post-meta">
-        <div class="post-tags">
+    <div class="post-card_content">
+        <div class="post-card_title">Two Sum</div>
+
+        <div class="post-card_meta">
+            <div class="post-date">
+                <div class="post-tags">
     
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
             <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
@@ -1430,162 +1092,42 @@ pre[class*="language-"] {
     
 
     <div>
+
+            
+                <span class="post-tag">easy</span>
+            , 
+
+            
+                <span class="post-tag">array</span>
+            , 
+
+            
+                <span class="post-tag">hash table</span>
+            
     </div>
 </div>
 
+            </div>
 
-        
-        <div class="post-date">
+            <div class="post-card_tags">
+                <div class="post-date">
 	<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
 		<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
 					d="M4 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm12-4v4M8 3v4m-4 4h16M7 14h.013m2.997 0h.005m2.995 0h.005m3 0h.005m-3.005 3h.005m-6.01 0h.005m2.995 0h.005"/>
 	</svg>
 
-	<span>03 June 2025</span>
+	<span>04 June 2025</span>
 </div>
 
-    </div>
-    <div class="post-header_image-container" style="background-image: url('/images/previews/prepare-for-Interviews-p2.webp');">
-    
-            <div class="post-card_complexity">
-                
-
-
-
-
-
             </div>
-    </div>
-    <div class="post-card task-card">
-    <h1 id="how-to-succeed-during-the-interview-part-2-strategy-and-communication" tabindex="-1">How to Succeed During the Interview (Part 2: Strategy &amp; Communication) <a class="header-anchor" href="#how-to-succeed-during-the-interview-part-2-strategy-and-communication">#</a></h1>
-<p>Before we start, let’s take a moment to talk about the interview process and what makes a good one.</p>
-<p>You can read the first part of this article <a href="/blog/prepare-for-Interviews-p1/">here</a>.</p>
-<hr>
-<h2 id="several-principles" tabindex="-1">🧭 Several Principles <a class="header-anchor" href="#several-principles">#</a></h2>
-<p>Here’s a little spoiler:</p>
-<blockquote>
-<p><strong>A good interview is usually a two-way conversation.</strong></p>
-</blockquote>
-<p>And the most important advice is this — don’t be afraid to <strong>talk to your interviewer</strong>.
-Ask questions, share your assumptions, and let the interviewer guide you with follow-up questions or hints.</p>
-<p>Most importantly, give them the space to make decisions whenever possible — whether it’s about the direction of the solution, level of optimization, or how deep to go.</p>
-<p>Let’s break it down.</p>
-<hr>
-<h3 id="align-with-the-interviewer" tabindex="-1">☑️ Align with the Interviewer <a class="header-anchor" href="#align-with-the-interviewer">#</a></h3>
-<p>It’s always helpful to understand <strong>what the interviewer expects</strong> from this part of the process, especially in terms of time limits.
-This can work in your favor.
-For example, if you realize you're stuck halfway through a problem, you can ask:</p>
-<blockquote>
-<p>“Would you prefer I keep pushing on this one, or should we move to the next task?”</p>
-</blockquote>
-<hr>
-<h3 id="read-the-task-carefully" tabindex="-1">☑️ Read the Task Carefully <a class="header-anchor" href="#read-the-task-carefully">#</a></h3>
-<p>Even if you’ve seen a similar problem before, <strong>don’t jump into coding just based on the title</strong>.
-Review the <strong>requirements</strong>, <strong>examples</strong>, and <strong>constraints</strong> — they often contain helpful hints that clarify the problem and narrow the scope.
-Interviewers sometimes <strong>tweak well-known problems</strong> specifically to catch candidates who rely on memorized solutions without truly understanding them.</p>
-<hr>
-<h3 id="ask-clarifying-questions" tabindex="-1">☑️ Ask Clarifying Questions <a class="header-anchor" href="#ask-clarifying-questions">#</a></h3>
-<p><strong>Asking</strong> clarifying questions is a <strong>green flag</strong> — it shows that you’re thoughtful and care about aligning with the stakeholders’ needs.</p>
-<blockquote>
-<p>Trust me, It's always better to solve the actual problem than something you assumed.</p>
-</blockquote>
-<hr>
-<h3 id="don-t-rush-into-coding" tabindex="-1">☑️ Don’t Rush Into Coding <a class="header-anchor" href="#don-t-rush-into-coding">#</a></h3>
-<p>Even if you're 100% confident in your skills and solution, take a moment to talk through your approach out loud with the interviewer first.
-They might point out something important, help clarify the requirements, highlight edge cases, or even decide to skip the coding part to save time.</p>
-<hr>
-<h3 id="challenge-your-solution-and-think-about-edge-cases-before-coding" tabindex="-1">☑️ Challenge your solution and think about edge cases before coding <a class="header-anchor" href="#challenge-your-solution-and-think-about-edge-cases-before-coding">#</a></h3>
-<p>Sometimes, a solution might work for common inputs but completely fail on edge cases that still fall within the task requirements.
-In that case, the solution becomes useless.
-<strong>Thinking through these scenarios</strong> before writing any code is a <strong>big green flag</strong> for the interviewer — it shows that you think critically before jumping into implementation, which is a <strong>valuable quality for any engineer</strong>.</p>
-<p>Test your plan with weird inputs:</p>
-<ul>
-<li>Empty arrays</li>
-<li>All identical elements</li>
-<li>Already sorted input</li>
-<li>etc</li>
-</ul>
-<hr>
-<h3 id="start-with-a-simple-solution" tabindex="-1">☑️ Start with a Simple Solution <a class="header-anchor" href="#start-with-a-simple-solution">#</a></h3>
-<p>Don’t aim for the most optimized version right away.
-It's often better to begin with a <strong>basic brute-force</strong> approach that <strong>works</strong>, rather than <strong>getting stuck halfway</strong> through a more advanced one.
-If you realize your solution can be improved, feel free to say something like:</p>
-<blockquote>
-<p>“I see that this solution has quadratic complexity complexity. Should I finish this version first, or would you prefer we jump to some optimized ideas?”</p>
-</blockquote>
-<p>That way, you're showing awareness of <strong>performance trade-offs</strong> and leaving it to the interviewer to decide what direction to take.</p>
-<hr>
-<h3 id="describe-your-thinking-while-coding" tabindex="-1">☑️ Describe your thinking while coding <a class="header-anchor" href="#describe-your-thinking-while-coding">#</a></h3>
-<p>Speak your thoughts:</p>
-<blockquote>
-<p>“I’m using a hash map here to track counts...”</p>
-</blockquote>
-<p>The main goal here is to <strong>show</strong> your <strong>mindset</strong> and <strong>problem-solving process</strong>.
-Speak as you go — <strong>explain</strong> your assumptions, what you’re trying to achieve, and why you’re choosing a particular approach.
-That doesn’t mean you need to talk non-stop: it’s totally fine to pause and think. But <strong>try to avoid long silences</strong>.
-By thinking out loud, you give the interviewer a chance to <strong>follow your logic</strong>, <strong>offer guidance</strong>, or even <strong>give subtle hints</strong>.</p>
-<hr>
-<h3 id="estimate-complexity" tabindex="-1">☑️ Estimate Complexity <a class="header-anchor" href="#estimate-complexity">#</a></h3>
-<p>A key part of algorithm design is <strong>comparing</strong> different approaches to solving the same problem.
-In many cases, there are <strong>countless possible solutions</strong> — or sometimes none at all.
-Of course, the most <strong>basic requirement</strong> is that your algorithm must return the <strong>correct output for valid inputs</strong>.
-If it can’t do that, it’s not really an algorithm.</p>
-<p>But once you have a few working solutions, you should be able to <strong>compare</strong> them.
-In 99% of cases, this means evaluating their <code>asymptotic complexity</code> using <code>Big O notation</code>.
-(We’ll explain those terms in a future post.)
-For now, just keep in mind: it’s not enough to find a solution — the interviewer expects you to <strong>evaluate its performance and understand whether it’s optimal or not</strong>.</p>
-<hr>
-<h3 id="can-we-do-better-tim-roughgarden-stanford-cs" tabindex="-1">🧠 “Can We Do Better?” — Tim Roughgarden, Stanford CS <a class="header-anchor" href="#can-we-do-better-tim-roughgarden-stanford-cs">#</a></h3>
-<p>No one expects you to come up with a unique or groundbreaking algorithm during a tech interview.
-Most interviewers are looking for a well-known solution pattern from a familiar list.
-But once you’ve found a working solution, <strong>don’t stop there</strong>.
-Tim Roughgarden, in his Stanford course, says:</p>
-<blockquote>
-<p>As an algorithm designer, you should adopt as your Mantra the question, “<strong>can we do better?</strong>”</p>
-</blockquote>
-<p>That’s a great question to ask once your code works — and it’s exactly the kind of thinking your interviewer wants to see.</p>
-<hr>
-<h2 id="worst-case-interview-what-not-to-do" tabindex="-1">🚩 Worst-Case Interview: What Not to Do <a class="header-anchor" href="#worst-case-interview-what-not-to-do">#</a></h2>
-<p>The worst-case scenario I can imagine as an interviewer looks something like this:</p>
-<p>The candidate <strong>starts coding immediately</strong> after reading the task description.
-They <strong>don’t ask</strong> any clarifying questions and <strong>make no comments</strong> during implementation.
-At some point, they get stuck and silently try to “debug” <strong>without explaining their thought process</strong>.
-Or maybe they write a solution that only works for a few examples but fails on edge cases.</p>
-<p>In the best case, they might <strong>even end up with a fully working and optimized solution</strong> — maybe <strong>the best one possible</strong> — but this would still be <strong>a bad interview</strong>.</p>
-<p>Why? Because the process matters more than just the final result. It’s better to not finish the solution at all, but <strong>actively communicate</strong>, <strong>think out loud</strong>, and <strong>demonstrate how you approach the problem</strong>.</p>
-<hr>
-<h2 id="final-thoughts" tabindex="-1">💡 Final Thoughts <a class="header-anchor" href="#final-thoughts">#</a></h2>
-<p>Remember:</p>
-<blockquote>
-<p>A technical interview isn’t just about hard skills.<br>
-The interviewer is also evaluating your <strong>communication, adaptability, and mindset</strong>.</p>
-</blockquote>
-<p>You don’t need to be perfect.<br>
-Just be thoughtful, ask questions, and work through problems like a teammate — not a solo coder.</p>
-
-
-    
-        
-        <div class="post-author-data">
-            ✍️&nbsp;Written&nbsp;by&nbsp;<a href="https://www.linkedin.com/in/tifongod/" target="_blank" class="post-author-url">Denis Kolpakov&nbsp;<img src="/images/linkedIn_logo_initials.png" alt="LinkedIn" class="linkedin-icon"></a>
         </div>
-    
-    <p class="post-tg-data">
-      📬&nbsp;Like&nbsp;this&nbsp;post?&nbsp;<strong><a href="https://t.me/+5CfB3ShlUekzNGUy" target="_blank" class="post-tg-url">Follow&nbsp;@thealgoapp</a></strong>&nbsp;for&nbsp;more!
-    </p>
     </div>
+</a>
 
-    
-            <div class="post-navigation">
-                <div>
-                        <a class="btn" href="/blog/prepare-for-Interviews-p1/">< Previous Challenge</a>
-                    
-                </div>
-                <div>
-                        <a class="btn" href="/blog/two-sum/">Next Challenge ></a>
-                    
-                </div>
-            </div>
+  
+</div>
+
+
 </section>
 
 <footer class="site-footer">
