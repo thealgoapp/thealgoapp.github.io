@@ -12,9 +12,9 @@ description: A practical blog for software engineers preparing for coding interv
 
 ---
 
-# Welcome to TheAlgo.app!
+# Welcome to TheAlgo.App!
 
-Hey there — and welcome to **TheAlgo.app**, a blog dedicated to helping you (and ourselves!) get better at one of the most intimidating parts of technical interviews: coding and algorithmic questions.
+Hey there — and welcome to **TheAlgo.App**, a blog dedicated to helping you (and ourselves!) get better at one of the most intimidating parts of technical interviews: coding and algorithmic questions.
 
 Whether you're preparing for a **FAANG** interview or just want to level up your **computer science fundamentals**, you’re in the right place.
 

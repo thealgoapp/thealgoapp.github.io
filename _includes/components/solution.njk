@@ -1,17 +1,25 @@
 {% set solutionFileName = fileName or "solution" %}
 {% set goPath = "../../content/blog/" + taskName + "/go/" + solutionFileName + ".go" %}
+{% set goTestsPath = "../../content/blog/" + taskName + "/go/" + solutionFileName + "_test.go" %}
 {% set tsPath = "../../content/blog/" + taskName + "/ts/" + solutionFileName + ".ts" %}
+{% set tsTestsPath = "../../content/blog/" + taskName + "/ts/" + solutionFileName + ".spec.ts" %}
 
 {% set tabsId = "solution-tabs_" + range(1, 1000) | random %}
 
 <div class="code-sample">
 	<ul " class="tab" data-tab="{{ tabsId }}" data-name="{{ tabsId }}">
-		<li class="active" id="go">
+		<li class="active" id="go-{{ tabsId }}">
 			<a href="#">go</a>
 		</li>
-		<li id="type-script" class="">
-			<a href="#">type script</a>
+		<li id="go-tests-{{ tabsId }}" class="">
+			<a href="#">go tests</a>
 		</li>
+        <li class="" id="type-script-{{ tabsId }}">
+            <a href="#">type script</a>
+        </li>
+        <li id="type-script-tests-{{ tabsId }}" class="">
+            <a href="#">type script tests</a>
+        </li>
 	</ul>
 
 	<ul class="tab-content" id="{{ tabsId }}" data-name="{{ tabsId }}">
@@ -21,9 +29,21 @@
 {% endhighlight %}
 		</li>
 
+        <li class="">
+{% highlight "go" %}
+    {% include goTestsPath %}
+{% endhighlight %}
+        </li>
+
 		<li class="">
 {% highlight "typescript" %}
 	{% include tsPath %}
+{% endhighlight %}
+		</li>
+
+		<li class="">
+{% highlight "typescript" %}
+	{% include tsTestsPath %}
 {% endhighlight %}
 		</li>
 	</ul>
