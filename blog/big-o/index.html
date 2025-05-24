@@ -1,0 +1,1719 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Big O!</title>
+
+    
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#157878">
+<meta name="description" content="A practical guide to Big-O notation and algorithm complexity for software engineers. Includes real examples, common pitfalls, and interview tips.">
+
+<!-- Facebook Meta Tags -->
+<meta property="og:url" content="https://thealgo.app">
+<meta property="og:type" content="website">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Big O!">
+<meta property="og:description" content="A practical guide to Big-O notation and algorithm complexity for software engineers. Includes real examples, common pitfalls, and interview tips.">
+<meta property="og:image" content="https://thealgo.app/images/big-o/preview.webp">
+
+<!-- Twitter Meta Tags -->
+<meta property="twitter:domain" content="thealgo.app">
+<meta property="twitter:url" content="https://thealgo.app">
+<meta name="twitter:title" content="Big O!">
+<meta name="twitter:description" content="A practical guide to Big-O notation and algorithm complexity for software engineers. Includes real examples, common pitfalls, and interview tips.">
+<meta name="twitter:image" content="https://thealgo.app/images/big-o/preview.webp">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <script src="/js/tabs.js"></script>
+
+    <style>/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+
+html {
+  font-family: sans-serif; /* 1 */
+  -ms-text-size-adjust: 100%; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/**
+ * Remove default margin.
+ */
+
+body {
+  margin: 0;
+}
+
+/* HTML5 display definitions
+   ========================================================================== */
+
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block; /* 1 */
+  vertical-align: baseline; /* 2 */
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
+ */
+
+[hidden],
+template {
+  display: none;
+}
+
+/* Links
+   ========================================================================== */
+
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+
+a {
+  background-color: transparent;
+}
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/* Text-level semantics
+   ========================================================================== */
+
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+
+b,
+strong {
+  font-weight: bold;
+}
+
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+/* Embedded content
+   ========================================================================== */
+
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+
+img {
+  border: 0;
+}
+
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Grouping content
+   ========================================================================== */
+
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+
+figure {
+  margin: 0;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+}
+
+/**
+ * Contain overflow in all browsers.
+ */
+
+pre {
+  overflow: auto;
+}
+
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+/* Forms
+   ========================================================================== */
+
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit; /* 1 */
+  font: inherit; /* 2 */
+  margin: 0; /* 3 */
+}
+
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+
+button {
+  overflow: visible;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+
+button,
+select {
+  text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+
+button,
+html input[type="button"], /* 1 */
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button; /* 2 */
+  cursor: pointer; /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+
+input {
+  line-height: normal;
+}
+
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome
+ *    (include `-moz` to future-proof).
+ */
+
+input[type="search"] {
+  -webkit-appearance: textfield; /* 1 */ /* 2 */
+  box-sizing: content-box;
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+
+legend {
+  border: 0; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+
+optgroup {
+  font-weight: bold;
+}
+
+/* Tables
+   ========================================================================== */
+
+/**
+ * Remove most spacing between table cells.
+ */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+}
+@font-face {
+    font-family: MartinMono;
+    src: url(/fonts/MartianMono-Regular.ttf);
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Manrope;
+    src: url(/fonts/Manrope-Regular.ttf);
+    font-display: swap;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: Manrope;
+    src: url(/fonts/Manrope-Bold.ttf);
+    font-display: swap;
+    font-weight: bold;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    padding: 0;
+    margin: 0;
+    font-family: Manrope, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: rgb(23, 23, 23);
+    background: #f5f6f8;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 42em) {
+    body {
+        overflow-y: auto;
+    }
+}
+
+a {
+    color: #1e6bb8;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: rgb(23, 23, 23);
+    padding: 8px;
+    transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+}
+
+.btn:hover {
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 0.375rem;
+}
+
+.btn_dark {
+    width: 80px;
+    color: #606c71;
+    border: 1px solid #606c71;
+    border-radius: 0.375rem;
+}
+
+.btn_dark:hover {
+    background: #d5d6d67d;
+}
+
+.page-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    padding: 0.5rem 3rem;
+    backdrop-filter: blur(8px);
+    text-align: center;
+    background: rgb(255 255 255 / 0.6);
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02);
+}
+
+.page-header_content {
+    display: flex;
+    align-items: center;
+    max-width: 896px;
+    margin: auto;
+    width: 100%;
+}
+
+@media screen and (max-width: 42em) {
+    .page-header {
+        padding: 1rem 3rem;
+        position: inherit;
+        border-bottom: solid 1px #efefef;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02);
+    }
+}
+
+.project-name {
+    margin: 0;
+    font-size: 20px;
+    color: rgb(23, 23, 23);
+}
+
+@media screen and (min-width: 42em) and (max-width: 64em) {
+    .project-name {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 42em) {
+    .project-name {
+        font-size: 1.2rem;
+    }
+}
+
+.project-tagline {
+    font-weight: normal;
+    opacity: 0.7;
+}
+
+@media screen and (min-width: 64em) {
+    .project-tagline {
+        font-size: 1.25rem;
+    }
+}
+
+@media screen and (min-width: 42em) and (max-width: 64em) {
+    .project-tagline {
+        font-size: 1.15rem;
+    }
+}
+
+@media screen and (max-width: 42em) {
+    .project-tagline {
+        font-size: 1rem;
+    }
+}
+
+.main-content, .post-content {
+    margin-top: 60px;
+    flex: 1;
+    word-wrap: break-word;
+    position: relative;
+}
+
+@media screen and (min-width: 64em) {
+    .main-content, .post-content {
+        max-width: 896px;
+        width: 100%;
+        padding: 2rem 0;
+        margin: 60px auto 0;
+        font-size: 1.1rem;
+    }
+}
+
+@media screen and (min-width: 42em) and (max-width: 64em) {
+    .main-content, .post-content {
+        padding: 2rem 3rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media screen and (max-width: 42em) {
+    .main-content {
+        padding: 2rem 1rem;
+        font-size: 1rem;
+        margin-top: 0;
+    }
+
+    .post-content {
+        padding: 2rem 0 0;
+        font-size: 1rem;
+        margin-top: 0;
+    }
+}
+
+img:not(.logo) {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: normal;
+    color: rgb(51, 51, 51);
+}
+
+h2, h3, h4, h5, h6 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: normal;
+    color: #1e6bb8;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+ul, ol {
+    margin-top: 0;
+}
+
+blockquote {
+    padding: 0 1rem;
+    margin-left: 0;
+    color: #819198;
+    border-left: 0.3rem solid #dce6f0;
+}
+
+blockquote > :first-child {
+    margin-top: 0;
+}
+
+blockquote > :last-child {
+    margin-bottom: 0;
+}
+
+table {
+    display: block;
+    width: 100%;
+    overflow: auto;
+    word-break: keep-all;
+    -webkit-overflow-scrolling: touch;
+}
+
+table th {
+    font-weight: bold;
+}
+
+table th, table td {
+    padding: 0.5rem 1rem;
+    border: 1px solid #e9ebec;
+}
+
+dl {
+    padding: 0;
+}
+
+dl dt {
+    padding: 0;
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+dl dd {
+    padding: 0;
+    margin-bottom: 1rem;
+}
+
+hr {
+    height: 2px;
+    padding: 0;
+    background-color: #eff0f1;
+    border: 0;
+    width: 300px;
+    margin: 2rem auto;
+}
+
+.site-footer {
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem 3rem;
+    border-top: solid 1px #efefef;
+    background: white;
+}
+
+.site-footer_content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 896px;
+    width: 100%;
+}
+
+@media screen and (max-width: 42em) {
+    .site-footer_content {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+}
+
+.site-footer-owner {
+    display: block;
+}
+
+.site-footer-credits {
+    color: #819198;
+}
+
+.logo {
+    display: block;
+    border-radius: 0.375rem;
+    width: 36px;
+    height: 36px;
+}
+
+@media screen and (max-width: 42em) {
+    .logo {
+        width: 42px;
+        height: 42px;
+    }
+}
+
+.page-logo {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none !important;
+}
+
+.page-logo:hover {
+    text-decoration: none;
+}
+
+@media screen and (max-width: 42em) {
+    .page-logo {
+        gap: 10px;
+        flex-direction: column;
+    }
+}
+
+
+.actions {
+    display: flex;
+    gap: 8px;
+}
+
+.mobile-actions {
+    display: none;
+}
+
+@media screen and (max-width: 42em) {
+    .actions {
+        display: none;
+    }
+
+    .mobile-actions {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+}
+
+.post-card {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02);
+    overflow: hidden;
+}
+
+.post-card:not(.task-card):hover {
+    text-decoration: none;
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.05), 0 3px 10px -1px rgba(0, 0, 0, 0.05), 0 5px 10px 0 rgba(0, 0, 0, 0.05);
+}
+
+.task-card {
+    padding: 40px 60px;
+}
+
+@media screen and (max-width: 42em) {
+    .task-card {
+        border-radius: 0;
+        border-top: solid 1px #efefef;
+        padding: 0 20px;
+    }
+}
+
+.post-card_content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 10px;
+    flex: 1;
+}
+
+.post-card_tags {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post-card_image-container {
+    position: relative;
+    border-bottom: 1px solid #f2f2f2;
+    height: 250px;
+    background-size: contain;
+}
+
+.post-header_image-container {
+    position: relative;
+    border-bottom: 1px solid #f2f2f2;
+    /*height: 300px;*/
+    background-size: cover;
+    aspect-ratio: 2/0.75
+}
+
+.post-card_complexity {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+}
+
+@media screen and (max-width: 42em) {
+    .post-card_content {
+        gap: 16px;
+    }
+}
+
+.post-card_title {
+    font-size: 1.3em;
+    color: #1e6bb8;
+    height: 100%;
+}
+
+.post-card_meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.post-date {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #606c71;
+}
+
+.all-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.post-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+@media screen and (max-width: 42em) {
+    .all-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .post-header {
+        padding: 0 20px;
+    }
+}
+
+.heading .heading-anchor {
+    opacity: 0;
+}
+
+.heading:hover .heading-anchor {
+    opacity: 1;
+    color: #00000050;
+}
+
+.heading:hover .heading-anchor:hover {
+    color: #00000085;
+    text-decoration: none;
+}
+
+code {
+    padding: 2px 4px;
+    font-family: MartinMono, monospace, sans-serif;
+    font-size: 0.8rem;
+    color: #567482;
+    background-color: #f3f6fa;
+    border-radius: 0.3rem;
+}
+
+.main-page {
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+}
+
+.tags {
+    display: inline-block;
+}
+
+.post-tags {
+    color: #606c71;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.post-tags.centered {
+    justify-content: center;
+}
+.complexity {
+    border: 1px solid #d9d9d9;;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-size: 12px;
+    padding: 3px 10px;
+    letter-spacing: 1px;
+}
+
+.complexity_medium {
+    color: #d48806;
+    background: #fffbe6;
+    border-color: #ffe58f;
+}
+
+.complexity_easy {
+    color: #389e0d;
+    background: #f6ffed;
+    border-color: #b7eb8f;
+}
+
+.complexity_hard {
+    color: #cf1322;
+    background: #fff1f0;
+    border-color: #ffa39e;
+}
+.tab {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -20px;
+    padding: 0;
+    list-style: none;
+    position: relative;
+}
+
+.tab > * {
+    flex: none;
+    padding-left: 20px;
+    position: relative;
+}
+
+.tab > * > a {
+    display: block;
+    text-align: center;
+    padding: 9px 20px;
+    color: #999;
+    border-bottom: 2px solid transparent;
+    font-size: 12px;
+    text-transform: uppercase;
+    transition: color .1s ease-in-out;
+    line-height: 20px;
+}
+
+.tab > .active > a {
+    color:#222;
+    border-color: #1e87f0;
+}
+
+.tab > li > a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.tab-content {
+    padding: 0;
+}
+
+.tab-content > li {
+    display: none;
+}
+.tab-content > li.active {
+    display: initial;
+}
+.post-navigation {
+	display: flex;
+	justify-content: space-between;
+	gap: 16px;
+	margin: 20px 0;
+}
+
+@media screen and (max-width: 42em) {
+	.post-navigation {
+		padding: 0 16px;
+		font-size: 14px;
+	}
+}
+
+.post-meta {
+	display: flex;
+	justify-content: space-between;
+	gap: 8px;
+	margin-bottom: 4px;
+	font-size: 14px;
+	padding: 0 14px;
+}
+
+.post-time {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+	color: #606c71;
+}
+
+.post-complexity {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.post-author-data {
+	display: flex;
+	justify-content: right;
+	margin-top: 50px;
+	border-radius: 10px;
+	font-size: 18px;
+}
+
+.post-author-url {
+	color: #0077b5;
+	text-decoration: none;
+	font-weight: bold;
+	display: inline-flex;
+	align-items: center;
+}
+
+.post-author-url:hover {
+	text-decoration: underline;
+}
+
+.post-tg-data {
+	display: flex;
+	justify-content: right;
+	margin-top: 10px;
+	border-radius: 10px;
+	font-size: 12px;
+	color: #555;
+}
+
+.post-tg-url {
+	color: #0077b5;
+	text-decoration: none;
+	font-weight: bold;
+	display: inline-flex;
+	align-items: center;
+}
+
+.post-tg-url:hover {
+	text-decoration: underline;
+}
+
+.linkedin-icon {
+	width: 16px;
+	height: 16px;
+	margin-left: 5px;
+}
+
+.post-original-url {
+	display: flex;
+	justify-content: center;
+	margin-top: 10px;
+	font-size: 14px;
+}
+
+.header-anchor {
+	color: #00000050;
+	display: none;
+}
+
+.header-anchor:hover {
+	color: #00000085;
+	text-decoration: underline;
+}
+
+h1:hover .header-anchor,
+h2:hover .header-anchor,
+h3:hover .header-anchor,
+h4:hover .header-anchor,
+h5:hover .header-anchor,
+h6:hover .header-anchor {
+	display: inline-block;
+}
+
+.code-sample pre {
+	font-size: 0.85rem;
+}
+code[class*="language-"],
+pre[class*="language-"] {
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	color: #c3cee3;
+	background: #263238;
+	font-family: Roboto Mono, monospace;
+	font-size: 0.8rem;
+	line-height: 1.5em;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+code[class*="language-"]::-moz-selection,
+pre[class*="language-"]::-moz-selection,
+code[class*="language-"] ::-moz-selection,
+pre[class*="language-"] ::-moz-selection {
+	background: #363636;
+}
+
+code[class*="language-"]::selection,
+pre[class*="language-"]::selection,
+code[class*="language-"] ::selection,
+pre[class*="language-"] ::selection {
+	background: #363636;
+}
+
+:not(pre) > code[class*="language-"] {
+	white-space: normal;
+	border-radius: 0.2em;
+	padding: 0.1em;
+}
+
+pre[class*="language-"] {
+	overflow: auto;
+	position: relative;
+	margin: 0.5em 0;
+	padding: 1.25em 1em;
+}
+
+.language-css > code,
+.language-sass > code,
+.language-scss > code {
+	color: #fd9170;
+}
+
+[class*="language-"] .namespace {
+	opacity: 0.7;
+}
+
+.token.atrule {
+	color: #c792ea;
+}
+
+.token.attr-name {
+	color: #ffcb6b;
+}
+
+.token.attr-value {
+	color: #c3e88d;
+}
+
+.token.attribute {
+	color: #c3e88d;
+}
+
+.token.boolean {
+	color: #c792ea;
+}
+
+.token.builtin {
+	color: #ffcb6b;
+}
+
+.token.cdata {
+	color: #80cbc4;
+}
+
+.token.char {
+	color: #80cbc4;
+}
+
+.token.class {
+	color: #ffcb6b;
+}
+
+.token.class-name {
+	color: #f2ff00;
+}
+
+.token.color {
+	color: #f2ff00;
+}
+
+.token.comment {
+	color: #546e7a;
+}
+
+.token.constant {
+	color: #c792ea;
+}
+
+.token.deleted {
+	color: #f07178;
+}
+
+.token.doctype {
+	color: #546e7a;
+}
+
+.token.entity {
+	color: #f07178;
+}
+
+.token.function {
+	color: #c792ea;
+}
+
+.token.hexcode {
+	color: #f2ff00;
+}
+
+.token.id {
+	color: #c792ea;
+	font-weight: bold;
+}
+
+.token.important {
+	color: #c792ea;
+	font-weight: bold;
+}
+
+.token.inserted {
+	color: #80cbc4;
+}
+
+.token.keyword {
+	color: #c792ea;
+	font-style: italic;
+}
+
+.token.number {
+	color: #fd9170;
+}
+
+.token.operator {
+	color: #89ddff;
+}
+
+.token.prolog {
+	color: #546e7a;
+}
+
+.token.property {
+	color: #80cbc4;
+}
+
+.token.pseudo-class {
+	color: #c3e88d;
+}
+
+.token.pseudo-element {
+	color: #c3e88d;
+}
+
+.token.punctuation {
+	color: #89ddff;
+}
+
+.token.regex {
+	color: #f2ff00;
+}
+
+.token.selector {
+	color: #f07178;
+}
+
+.token.string {
+	color: #c3e88d;
+}
+
+.token.symbol {
+	color: #c792ea;
+}
+
+.token.tag {
+	color: #f07178;
+}
+
+.token.unit {
+	color: #f07178;
+}
+
+.token.url {
+	color: #fd9170;
+}
+
+.token.variable {
+	color: #f07178;
+}</style>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8Z90JVPXDN"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'G-8Z90JVPXDN');
+</script>
+</head>
+<body>
+
+<section class="page-header">
+	<div class="page-header_content">
+		<a href="/" class="page-logo">
+			<img src="/images/logo_small.jpg" alt="The Algo App" class="logo">
+			<h1 class="project-name">The Algo App</h1>
+		</a>
+
+		<div class="actions">
+	<a href="https://github.com/thealgoapp/thealgoapp.github.io" target="_blank"
+		 class="btn" title="Github">
+		<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+			<path fill="currentColor" fill-rule="evenodd"
+						d="M11.999 1C5.926 1 1 5.925 1 12c0 4.86 3.152 8.983 7.523 10.437c.55.102.75-.238.75-.53c0-.26-.009-.952-.014-1.87c-3.06.664-3.706-1.475-3.706-1.475c-.5-1.27-1.221-1.61-1.221-1.61c-.999-.681.075-.668.075-.668c1.105.078 1.685 1.134 1.685 1.134c.981 1.68 2.575 1.195 3.202.914c.1-.71.384-1.195.698-1.47c-2.442-.278-5.01-1.222-5.01-5.437c0-1.2.428-2.183 1.132-2.952c-.114-.278-.491-1.397.108-2.91c0 0 .923-.297 3.025 1.127A10.536 10.536 0 0 1 12 6.32a10.49 10.49 0 0 1 2.754.37c2.1-1.424 3.022-1.128 3.022-1.128c.6 1.514.223 2.633.11 2.911c.705.769 1.13 1.751 1.13 2.952c0 4.226-2.572 5.156-5.022 5.428c.395.34.747 1.01.747 2.037c0 1.47-.014 2.657-.014 3.017c0 .295.199.637.756.53C19.851 20.979 23 16.859 23 12c0-6.075-4.926-11-11.001-11"/>
+		</svg>
+	</a>
+
+	<a href="https://t.me/+5CfB3ShlUekzNGUy" target="_blank" class="btn" title="Telegram">
+		<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+			<path fill="none" stroke="currentColor" stroke-width="2"
+						d="M22 3L2 11l18.5 8L22 3ZM10 20.5l3-4.5m2.5-6.5L9 14l.859 6.012c.078.546.216.537.306-.003L11 15l4.5-5.5Z"/>
+		</svg>
+	</a>
+</div>
+
+	</div>
+</section>
+
+
+<section class="post-content">
+    <div class="post-header">
+        <h1>Big O!</h1>
+
+        <div class="post-complexity">
+            
+
+
+
+
+
+        </div>
+    </div>
+
+    <div class="post-meta">
+        <div class="post-tags">
+    
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                <path
+                        d="M3 8v4.172a2 2 0 0 0 .586 1.414l5.71 5.71a2.41 2.41 0 0 0 3.408 0l3.592-3.592a2.41 2.41 0 0 0 0-3.408l-5.71-5.71A2 2 0 0 0 9.172 6H5a2 2 0 0 0-2 2"/>
+                <path d="m18 19l1.592-1.592a4.82 4.82 0 0 0 0-6.816L15 6m-8 4h-.01"/>
+            </g>
+        </svg>
+    
+
+    <div>
+    </div>
+</div>
+
+
+        
+        <div class="post-date">
+	<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+		<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+					d="M4 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm12-4v4M8 3v4m-4 4h16M7 14h.013m2.997 0h.005m2.995 0h.005m3 0h.005m-3.005 3h.005m-6.01 0h.005m2.995 0h.005"/>
+	</svg>
+
+	<span>05 June 2025</span>
+</div>
+
+    </div>
+    <div class="post-header_image-container" style="background-image: url('/images/big-o/preview.webp');">
+    
+            <div class="post-card_complexity">
+                
+
+
+
+
+
+            </div>
+    </div>
+    <div class="post-card task-card">
+    <h1 id="big-o" tabindex="-1">Big-O! <a class="header-anchor" href="#big-o">#</a></h1>
+<p>Today, I want to dive into one of the most important theoretical topics: <strong>how to estimate and compare different algorithms that solve the same problem</strong>.</p>
+<p>I’ll try to be especially careful not to overwhelm you, because this topic can easily lean into deep academic theory with a lot of math (and to be fair, I’m not particularly good at it myself). But let me be honest with you: as I mentioned in <a href="/blog/prepare-for-Interviews-p1/">How to Prepare for Algorithm Interviews</a>, <strong>algorithms and data structures are both a science and an art — but our goal is to pass a developer interview</strong>.</p>
+<p>To be very clear: for that purpose, in 99% of cases, you <strong>don’t need a deep academic background in CS or math</strong>.
+You just need to remember <strong>a few basic formulas</strong>, understand <strong>what they mean</strong>, and know <strong>how to figure out which one describes your algorithm</strong>.</p>
+<hr>
+<h2 id="how-to-compare" tabindex="-1">How to compare <a class="header-anchor" href="#how-to-compare">#</a></h2>
+<p>First of all, let’s think about how we can compare different algorithms and what requirements they should meet. You can imagine dozens of possible criteria:
+Code size: How much code is required to implement the algorithm?</p>
+<ul>
+<li><strong>Readability</strong>: How easy is it to understand the algorithm just by reading the code?</li>
+<li><strong>Maintainability</strong> and <strong>flexibility</strong>: How easy is it to modify or extend the algorithm in the future?</li>
+<li><strong>Fault tolerance</strong>: How well does the algorithm handle invalid input, edge cases, or runtime errors?</li>
+<li><strong>Scalability</strong>: How well does the algorithm perform under heavy usage or repeated calls?</li>
+</ul>
+<p>All of these are important, especially in real-world tasks.
+But when we talk about <strong>algorithms and data structures</strong>, we usually focus on <strong>two key criteria</strong>:
+👉 <strong>Time complexity</strong> and <strong>space (memory) complexity</strong>.</p>
+<hr>
+<h2 id="asymptotic-complexity" tabindex="-1">Asymptotic complexity <a class="header-anchor" href="#asymptotic-complexity">#</a></h2>
+<p>To estimate <strong>time and space complexity</strong> in the context of algorithms and data structures, we typically use the concept of <strong>asymptotic complexity</strong>.
+Let’s be honest — it’s <strong>a very rough estimate</strong>, but that doesn’t mean we can’t use it to effectively <strong>compare different algorithms</strong>.</p>
+<p>We can’t predict the exact (or even approximate) execution time of an algorithm — there are simply too many influencing factors.
+These range from software to hardware, from ambient temperature to (jokingly) the phase of the moon.</p>
+<p>You might run your code on a personal laptop with a general-purpose OS, full of background processes and managed by a standard task scheduler.
+Or you might run the same program on a high-performance machine with a specialized OS that limits background activity, gives your code maximum priority, and operates in a temperature-controlled environment to avoid CPU throttling.</p>
+<p>The outcomes could be <strong>completely different</strong>. That’s why, <strong>at the design stage</strong>, we avoid relying on specific timing assumptions.</p>
+<p>Of course, we can use <strong>benchmarking tools</strong> later to get more precise performance data — but that requires <strong>deep domain knowledge</strong>.
+You need to understand your expected input workload, the hardware used in production, the programming language, and the entire tech stack.</p>
+<p>And even with all of that, there’s still <strong>no guarantee</strong> your time estimates will be accurate.</p>
+<p>Another useful approach is <strong>to count the number of actions</strong> the algorithm needs to perform.
+This is actually the right mindset — and it’s where most computer science courses begin their lectures on <strong>asymptotic complexity</strong>.</p>
+<p>But in my experience, teachers often forget to emphasize one key point early on:
+<strong>👉 It’s just an approximation</strong>.</p>
+<p>And that often leads to two problems:</p>
+<ul>
+<li>Students start paying <strong>too much attention</strong> to counting every single step.</li>
+<li>Later, they get confused when we suddenly <strong>start ignoring exact counts</strong>.</li>
+</ul>
+<p>Many variables can affect the actual result.
+In 99.99% of real-world cases, you’ll be writing code in a <strong>high-level programming language</strong>, which gets compiled down to machine code.
+And depending on the language, compiler, and target hardware, the number of actual CPU instructions may vary significantly.</p>
+<p>So whether your function contains <strong>one line of code</strong>, <strong>three</strong>, or even <strong>a hundred</strong> — it doesn’t really matter that much.</p>
+<p>What <strong>does</strong> matter is:
+<strong>How does the number of operations grow as the input size increases?</strong>
+That’s what asymptotic complexity is all about — it tells us <strong>how fast the execution time grows relative to the input size</strong>.</p>
+<hr>
+<h2 id="what-is-big-o" tabindex="-1">What is “Big-O”? <a class="header-anchor" href="#what-is-big-o">#</a></h2>
+<p>There are several different ways to describe <strong>asymptotic complexity</strong>.
+The most common notations are:</p>
+<ul>
+<li><strong>Big O</strong> — <code>O(f(n))</code>: describes the <strong>upper bound</strong> of growth.</li>
+<li><strong>Theta</strong> — <code>Θ(f(n))</code>: represents the <strong>exact bound</strong> (tight bound).</li>
+<li><strong>Big Omega</strong> — <code>Ω(f(n))</code>: describes the <strong>lower bound</strong> of growth.</li>
+<li><strong>Small o</strong> — <code>o(f(n))</code>: <strong>a strict upper bound</strong> — the algorithm grows strictly slower than f(n).</li>
+<li><strong>Small omega</strong> — <code>ω(f(n))</code>: a strict lower bound — the algorithm grows strictly faster than f(n).</li>
+<li>...and more.</li>
+</ul>
+<p>But to be honest — unless you're studying computer science <strong>academically</strong>, you can safely skip everything except <strong>Big O notation</strong>.</p>
+<p>Before we dive deeper into Big O, let’s define a few <strong>key principles</strong> to keep in mind.</p>
+<h3 id="key-principles" tabindex="-1">Key principles <a class="header-anchor" href="#key-principles">#</a></h3>
+<h4 id="we-focus-on-large-inputs" tabindex="-1">✅ We focus on large inputs <a class="header-anchor" href="#we-focus-on-large-inputs">#</a></h4>
+<p>This makes sense — if you're sorting just five numbers, it doesn’t matter which algorithm you use.</p>
+<p>Even randomly shuffling them a few times might eventually work. But once the input size starts to grow, algorithm efficiency becomes critical.</p>
+<h4 id="we-take-a-pessimistic-view-worst-case-analysis" tabindex="-1">✅ We take a pessimistic view — worst-case analysis <a class="header-anchor" href="#we-take-a-pessimistic-view-worst-case-analysis">#</a></h4>
+<p>We usually estimate how the algorithm behaves in <strong>the worst-case scenario</strong>, so we know it will perform at least that well in any other situation.</p>
+<p>Sometimes we make exceptions — especially when the worst-case is <strong>extremely unlikely</strong>.</p>
+<p>For example, looking up a value by key in a hash map has <strong>constant time complexity O(1)</strong> on average.
+Technically, there is a <strong>worst-case scenario</strong> where the complexity could <strong>degrade to O(n)</strong> (if all keys hash to the same bucket, and we have to search through them one by one).</p>
+<p>But in <strong>real-world applications</strong>, this rarely happens, especially if you're using <strong>standard built-in hash maps</strong> with a <strong>well-designed hash function that distributes keys evenly</strong>.
+In that case, the <strong>average-case complexity</strong> is far more relevant than the worst-case.</p>
+<hr>
+<h3 id="a-word-about-balance" tabindex="-1">⚖️ A word about balance <a class="header-anchor" href="#a-word-about-balance">#</a></h3>
+<p><strong>Big O notation</strong> is designed to describe the <strong>upper bound of an algorithm’s growth</strong>.
+But that doesn’t mean it’s enough to just pick the fastest-growing function you can think of — we need to strike a <strong>balance between a theoretical approximation and real-world usefulness</strong>.</p>
+<p>For example, imagine an extremely fast-growing function like <code>f(n) = ((n!)^n!)!</code>.
+This function explodes to infinity even for small inputs.
+If <code>n = 3</code>, we already get <code>f(n) = 46656!</code> — a number so huge it’s almost unimaginable.</p>
+<p>Technically, this would still qualify as a <strong>valid Big O upper bound</strong> for any algorithm.
+But in practice, that kind of estimate is <strong>useless</strong> — we wouldn’t be able to compare different algorithms meaningfully.</p>
+<p>So, how do we strike that balance?
+We focus on the <strong>fastest-growing part</strong> of the code — that’s what determines the overall complexity.</p>
+<p>Let’s look at an example:</p>
+<pre class="language-go" tabindex="0"><code class="language-go"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token string">"fmt"</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	input <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">}</span>
+	increased <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token function">len</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">)</span>
+	summary <span class="token operator">:=</span> <span class="token number">0</span>
+
+	<span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token function">len</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">{</span>
+		<span class="token keyword">for</span> j <span class="token operator">:=</span> i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> <span class="token function">len</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">;</span> j<span class="token operator">++</span> <span class="token punctuation">{</span>
+			<span class="token keyword">if</span> input<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> input<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token punctuation">{</span>
+				input<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> input<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> input<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> input<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token function">len</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">{</span>
+		increased <span class="token operator">=</span> <span class="token function">append</span><span class="token punctuation">(</span>increased<span class="token punctuation">,</span> input<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">10</span><span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+
+	summary <span class="token operator">=</span> <span class="token number">123</span> <span class="token operator">+</span> <span class="token number">456</span>
+
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>increased<span class="token punctuation">)</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>summary<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Now let’s estimate the complexity.</p>
+<p>First of all, we can split this code <strong>into three parts</strong>.</p>
+<hr>
+<h4 id="first-part-simple-in-place-sorting" tabindex="-1">First part – simple in-place sorting. <a class="header-anchor" href="#first-part-simple-in-place-sorting">#</a></h4>
+<p>We compare all elements <strong>with each other</strong>, and the number of operations depends on the input length.
+As I said before, the <strong>exact count</strong> depends on many factors, including the programming language.
+I wrote this code in Go, which allows you to swap elements in a single line:</p>
+<pre class="language-go" tabindex="0"><code class="language-go">input<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> input<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> input<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> input<span class="token punctuation">[</span>i<span class="token punctuation">]</span></code></pre>
+<p>Other languages usually require <strong>creating a temporary variable</strong> for this operation.
+<strong>Eventually</strong>, the compiler will <strong>translate</strong> this code into some <strong>CPU instructions</strong>, and we can’t know how many instructions will be generated in the end.
+It depends on the <strong>compiler</strong> and <strong>hardware</strong>.</p>
+<p>So it doesn’t matter how many lines are inside the loop.
+The important thing is that these actions are <strong>inside a loop</strong>. And this loop is <strong>inside the outer loop</strong>. And both of them <strong>depend on the length of the input</strong>.</p>
+<blockquote>
+<p>📝<strong>Here’s a little trick</strong> — some built-in functions aren’t atomic. For example, <strong>sorting</strong>.
+One of the most common interview mistakes is when the candidate <strong>forgets to account</strong> for such functions, assuming that “one line of code = one action.”</p>
+</blockquote>
+<p>It means that we perform n actions in the inner loop and repeat the outer loop n times — in total, <strong>n × n = n² operations</strong>.</p>
+<p>You could argue that the inner loop performs fewer actions because it starts from the next element after the outer loop index.
+The exact complexity is the sum of the first k natural numbers, which means:
+<code>f(n) = n(n - 1)/2 ≈ (n²)/2</code></p>
+<p>But in <strong>asymptotic complexity</strong>, we can <strong>ignore constant</strong> multipliers.
+It’s the same idea as with step-counting — if we don’t care about the exact number of operations, we <strong>can safely ignore any constant</strong> multipliers as well.</p>
+<h4 id="second-part-incrementing-each-original-element" tabindex="-1">Second part - incrementing each original element. <a class="header-anchor" href="#second-part-incrementing-each-original-element">#</a></h4>
+<p>This part is simple: we perform n actions.</p>
+<h4 id="third-part-just-summing-two-integers" tabindex="-1">Third part - just summing two integers. <a class="header-anchor" href="#third-part-just-summing-two-integers">#</a></h4>
+<p>This doesn’t depend on the input size, so it has constant complexity.</p>
+<h4 id="finally" tabindex="-1">Finally <a class="header-anchor" href="#finally">#</a></h4>
+<p>We get something like this:
+<code>f(n) = n² + n + 1</code>.</p>
+<p>But let’s remind ourselves of a key principle: &quot;<strong>We focus on large inputs</strong>&quot;.
+If we’re talking about, say, an input size of <strong>1,000,000</strong>, then everything <strong>except n²</strong> becomes <strong>negligible</strong>.</p>
+<p>Here’s the <strong>key idea</strong>:
+We care only about <strong>the fastest-growing part</strong> of the algorithm.
+Everything else — like constant multipliers, lower-degree terms of n, or constant-time operations — <strong>doesn’t matter</strong> at this stage.</p>
+<blockquote>
+<p>📝Of course, they can matter in real-world applications where input sizes are small or performance margins are tight — but not when analyzing asymptotic growth.</p>
+</blockquote>
+<hr>
+<h2 id="typical-time-complexities" tabindex="-1">Typical time complexities <a class="header-anchor" href="#typical-time-complexities">#</a></h2>
+<p>Does it mean we should know by heart every math/statistics formula? Of course, no. Here are some typical complexities that we usually face.</p>
+<h3 id="o-1-constant" tabindex="-1">O(1) - Constant <a class="header-anchor" href="#o-1-constant">#</a></h3>
+<p>The <strong>fastest algorithms</strong> are those whose performance <strong>doesn’t depend on input size</strong>.
+In practice, we usually can’t achieve this complexity for <strong>the entire algorithm</strong>, but we can often improve specific parts by using data structures that allow certain operations to run in constant time.</p>
+<p>A typical example is a <strong>hash map</strong>, which provides <strong>constant-time access</strong> to elements by key.
+So, for instance, when we need to find a pair of elements in an array, we can use a temporary hash map instead of a nested loop, reducing the complexity from <strong>O(n²)</strong> to <strong>O(n)</strong>.</p>
+<h3 id="o-log-n-logarithmic" tabindex="-1">O(log n) - Logarithmic <a class="header-anchor" href="#o-log-n-logarithmic">#</a></h3>
+<p>This is what we call a <strong>pretty fast class of algorithms</strong>.
+In these cases, <strong>the base of the logarithm doesn’t matter</strong>, so we simply write <code>log(n)</code> without specifying it.</p>
+<p>We typically achieve this complexity when we <strong>repeatedly split the input into smaller parts</strong>.
+Examples include <strong>binary search</strong>, <strong>tree-based search</strong>, <strong>input splitting</strong> in merge sort, and similar techniques.</p>
+<p>Just like with constant-time complexity, we usually <strong>can’t apply logarithmic time complexity to the entire algorithm</strong>, because it often requires the input <strong>to be preprocessed or structured in a specific way</strong> — for example, sorted, as in binary search.</p>
+<p>However, logarithmic complexity can still be <strong>a part of a larger algorithm</strong> and help reduce its <strong>overall complexity</strong>.</p>
+<blockquote>
+<p><strong>Spoiler alert</strong>: One of the most common time complexities you’ll encounter in real-world algorithms is <strong>O(nlog(n))</strong>.</p>
+</blockquote>
+<h3 id="o-n-linear" tabindex="-1">O(n) - Linear <a class="header-anchor" href="#o-n-linear">#</a></h3>
+<p>Still a very <strong>fast class of algorithms</strong>.</p>
+<p>This complexity means you can solve the problem by <strong>scanning the input once or a few times</strong>, possibly with the help of simple temporary structures like a hash map to store intermediate data.</p>
+<p>The key is that you <strong>don’t</strong> have <strong>nested loops</strong>, no <strong>comparing each element with every other element</strong>, and no <strong>deep recursion</strong> — just a <strong>straightforward pass</strong> over the data.</p>
+<p>You’ll encounter this complexity both in <strong>real-world applications</strong> and in <strong>interview problems</strong>.
+And in most interviews, if you manage to reduce your solution to <strong>linear time</strong> — you’ve likely found the <strong>optimal answer</strong>.</p>
+<h3 id="o-n-log-n-linearithmic" tabindex="-1">O(n log n) - Linearithmic <a class="header-anchor" href="#o-n-log-n-linearithmic">#</a></h3>
+<p>Usually, this is the <strong>last “fast” class of algorithms</strong>, at least when it comes to <strong>interview</strong> problems (<strong>not necessarily in the real world</strong>).</p>
+<p>As I mentioned earlier, we can often <strong>reduce quadratic complexity to linearithmic</strong> by using auxiliary structures (like <strong>trees</strong>) or by applying the <strong>divide-and-conquer</strong> principle.
+Some data structures — particularly <strong>trees and graphs</strong> — naturally provide this complexity for useful operations like search.</p>
+<p>The most common context where you’ll see this complexity is <strong>sorting</strong> — optimal sorting algorithms have <code>O(n*log(n))</code> time complexity.</p>
+<p>And here’s a <strong>strong recommendation</strong>: <strong>remember this fact</strong>, and try to <strong>dive deeper</strong> into at least one such algorithm — it’s a <strong>very popular interview topic</strong>.</p>
+<blockquote>
+<p>A small life hack: <strong>pay close attention to built-in sorting functions</strong>.
+Every programming language provides a built-in sorting function, and it’s usually just a <strong>one-liner</strong>.
+A very <strong>common mistake</strong> in interviews is when candidates forget to <strong>account</strong> for this &quot;one-line&quot; function when trying to estimate the overall complexity of their code.</p>
+</blockquote>
+<p>Just like with linear-time complexity, if you manage to reduce your algorithm to <strong>linearithmic complexity</strong>, that’s a good sign — you’ve probably found an <strong>optimal solution</strong>.</p>
+<h3 id="o-n-quadratic" tabindex="-1">O(n²) - Quadratic <a class="header-anchor" href="#o-n-quadratic">#</a></h3>
+<p>This is usually the first <strong>“slow” class of algorithms</strong> in <strong>interviews</strong>.
+In interviews, O(n²) is often the complexity of the <strong>first working</strong> solution — and a good moment to ask yourself:</p>
+<p><strong>👉 Can we do better?</strong></p>
+<p>In most cases, the answer will be <strong>yes</strong>.</p>
+<blockquote>
+<p>It can still be a reasonable estimation for more specific problems — for example, many matrix-related problems have slower complexity.
+But matrix operations aren’t a very common interview topic in general.
+They may show up in domain-specific roles, like graphics programming or scientific computing.</p>
+</blockquote>
+<p>You typically reach this complexity when you use a <strong>nested loop</strong>, <strong>compare each element with every other</strong>, and so on.</p>
+<p>If you see <strong>one nested loop</strong> — that’s <strong>quadratic</strong>. <strong>Two nested loops</strong> — that’s <strong>cubic</strong>. And so on.</p>
+<h3 id="other-estimations" tabindex="-1">Other estimations. <a class="header-anchor" href="#other-estimations">#</a></h3>
+<p>Of course, you can imagine/face other estimations, like <strong>O(2ⁿ) - Exponential</strong> or <strong>O(n!) - Factorial</strong>.
+But usually this means you are in the <strong>wrong way</strong>, because it’s typical estimations for different <strong>brute-force</strong> solutions.</p>
+
+
+    
+        
+        <div class="post-author-data">
+            ✍️&nbsp;Written&nbsp;by&nbsp;<a href="https://www.linkedin.com/in/tifongod/" target="_blank" class="post-author-url">Denis Kolpakov&nbsp;<img src="/images/linkedIn_logo_initials.png" alt="LinkedIn" class="linkedin-icon"></a>
+        </div>
+    
+    <p class="post-tg-data">
+      📬&nbsp;Like&nbsp;this&nbsp;post?&nbsp;<strong><a href="https://t.me/+5CfB3ShlUekzNGUy" target="_blank" class="post-tg-url">Follow&nbsp;@thealgoapp</a></strong>&nbsp;for&nbsp;more!
+    </p>
+    </div>
+
+    
+            <div class="post-navigation">
+                <div>
+                        <a class="btn" href="/blog/two-sum/">< Previous Challenge</a>
+                    
+                </div>
+                <div>
+                </div>
+            </div>
+</section>
+
+<footer class="site-footer">
+	<div class="site-footer_content">
+		<span class="site-footer-credits">
+				&copy; The Algo App 2025
+		</span>
+
+		<span class="site-footer-owner">
+			The Algo App is maintained by
+			<a href="https://www.linkedin.com/in/avivasyuta/" target="_blank">Aleksei Ivasiuta</a> and
+			<a href="https://www.linkedin.com/in/tifongod/" target="_blank">Denis Kolpakov</a>.
+		</span>
+
+		
+		
+		<div class="actions mobile-actions">
+	<a href="https://github.com/thealgoapp/thealgoapp.github.io" target="_blank"
+		 class="btn btn_dark" title="Github">
+		<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+			<path fill="currentColor" fill-rule="evenodd"
+						d="M11.999 1C5.926 1 1 5.925 1 12c0 4.86 3.152 8.983 7.523 10.437c.55.102.75-.238.75-.53c0-.26-.009-.952-.014-1.87c-3.06.664-3.706-1.475-3.706-1.475c-.5-1.27-1.221-1.61-1.221-1.61c-.999-.681.075-.668.075-.668c1.105.078 1.685 1.134 1.685 1.134c.981 1.68 2.575 1.195 3.202.914c.1-.71.384-1.195.698-1.47c-2.442-.278-5.01-1.222-5.01-5.437c0-1.2.428-2.183 1.132-2.952c-.114-.278-.491-1.397.108-2.91c0 0 .923-.297 3.025 1.127A10.536 10.536 0 0 1 12 6.32a10.49 10.49 0 0 1 2.754.37c2.1-1.424 3.022-1.128 3.022-1.128c.6 1.514.223 2.633.11 2.911c.705.769 1.13 1.751 1.13 2.952c0 4.226-2.572 5.156-5.022 5.428c.395.34.747 1.01.747 2.037c0 1.47-.014 2.657-.014 3.017c0 .295.199.637.756.53C19.851 20.979 23 16.859 23 12c0-6.075-4.926-11-11.001-11"/>
+		</svg>
+	</a>
+
+	<a href="https://t.me/+5CfB3ShlUekzNGUy" target="_blank" class="btn btn_dark" title="Telegram">
+		<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+			<path fill="none" stroke="currentColor" stroke-width="2"
+						d="M22 3L2 11l18.5 8L22 3ZM10 20.5l3-4.5m2.5-6.5L9 14l.859 6.012c.078.546.216.537.306-.003L11 15l4.5-5.5Z"/>
+		</svg>
+	</a>
+</div>
+
+	</div>
+</footer>
+
+
+</body>
+</html>
