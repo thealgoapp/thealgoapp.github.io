@@ -4,7 +4,7 @@ title: Two Sum
 date: 2025-06-04
 original_url: https://leetcode.com/problems/two-sum/
 author: dakolpakov
-preview_image: /images/previews/two-sum/preview.webp
+preview_image: /images/two-sum/preview.webp
 complexity: easy
 draft: true
 permalink: /blog/two-sum/
