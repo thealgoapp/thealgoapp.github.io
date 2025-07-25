@@ -25,8 +25,7 @@ You just need to remember **a few basic formulas**, understand **what they mean*
 ## How to compare
 
 First of all, let’s think about how we can compare different algorithms and what requirements they should meet. You can imagine dozens of possible criteria:
-Code size: How much code is required to implement the algorithm? 
-
+- **Code size**: How much code is required to implement the algorithm?
 - **Readability**: How easy is it to understand the algorithm just by reading the code? 
 - **Maintainability** and **flexibility**: How easy is it to modify or extend the algorithm in the future? 
 - **Fault tolerance**: How well does the algorithm handle invalid input, edge cases, or runtime errors? 
@@ -34,7 +33,8 @@ Code size: How much code is required to implement the algorithm?
 
 All of these are important, especially in real-world tasks.
 But when we talk about **algorithms and data structures**, we usually focus on **two key criteria**:
-👉 **Time complexity** and **space (memory) complexity**.
+
+👉 **Time complexity** and **Space (memory) complexity**.
 
 ---
 

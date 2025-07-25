@@ -54,6 +54,11 @@
         <div class="post-author-data">
             ✍️&nbsp;Written&nbsp;by&nbsp;<a href="{{ authors[author].linkedin }}" target="_blank" class="post-author-url">{{ authors[author].name }}&nbsp;<img src="/images/linkedIn_logo_initials.png" alt="LinkedIn" class="linkedin-icon"></a>
         </div>
+        {% if authors[author].orcid %}
+            <div class="post-orcid-data">
+                ✍️&nbsp;ORCID:&nbsp;<a href="https://orcid.org/{{ authors[author].orcid }}" target="_blank" class="post-author-url">{{ authors[author].orcid }}</a>
+            </div>
+        {% endif %}
     {% endif %}
     <p class="post-tg-data">
       📬&nbsp;Like&nbsp;this&nbsp;post?&nbsp;<strong><a href="{{ links.tg_invite }}" target="_blank" class="post-tg-url">Follow&nbsp;@thealgoapp</a></strong>&nbsp;for&nbsp;more!
@@ -67,8 +72,8 @@
     {% endif %}
 
     {%- if collections.posts %}
-        {%- set previousPost = collections.posts | getPreviousCollectionItem %}
-        {%- set nextPost = collections.posts | getNextCollectionItem %}
+        {%- set previousPost = collections.publishedPosts | getPreviousCollectionItem %}
+        {%- set nextPost = collections.publishedPosts | getNextCollectionItem %}
         {%- if nextPost or previousPost %}
             <div class="post-navigation">
                 <div>
