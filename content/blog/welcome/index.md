@@ -1,10 +1,10 @@
 ---
 layout: layouts/post.njk
 title: Welcome to TheAlgo.app!
-date: 2025-06-01
+date: 2025-07-29
 author: dakolpakov
 preview_image: /images/previews/welcome.webp
-excludeFromSitemap: true
+excludeFromSitemap: false
 draft: false
 permalink: /blog/welcome/
 og_type: article
