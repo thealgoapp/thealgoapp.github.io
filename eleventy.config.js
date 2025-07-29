@@ -13,6 +13,11 @@ const striptags = require('striptags');
 const {EleventyRenderPlugin} = require("@11ty/eleventy");
 
 module.exports = function (eleventyConfig) {
+    eleventyConfig.addFilter("sitemapDate", dateObj => {
+        if (!dateObj) return '';
+        return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toISO({ suppressMilliseconds: true });
+    });
+
     eleventyConfig.addCollection("publishedPosts", function(collectionApi) {
         const allPosts = collectionApi.getFilteredByTag("posts");
         return allPosts.filter(item => {
